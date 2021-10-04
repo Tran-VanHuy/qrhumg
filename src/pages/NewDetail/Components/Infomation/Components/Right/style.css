@@ -66,3 +66,10 @@
       height: 1%;
       border: 1px solid #6c757d;
 }
+
+.modal-body{
+
+      display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
