@@ -1,23 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import HomePage from "./pages/Home";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import Manage from "./pages/SystemManagement";
+import PageNewDetail from "./pages/NewDetail";
+import PageLogin from "./pages/Login";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { userLogin } from "./redux/Login/action";
 
 function App() {
+  const { dataInfo } = useSelector((state) => state.userReducer);
+  console.log({ dataInfo });
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(userLogin());
+  }, []);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Switch>
+          <Route path="/tin-tuc/:slug" component={PageNewDetail} />
+          <Route
+            path="/quan-ly-he-thong"
+            render={() => {
+              return localStorage.getItem("accesstoken") ? (
+                <Manage />
+              ) : (
+                <Redirect to="/dang-nhap" />
+              );
+            }}
+          />
+          <Route path="/dang-nhap" component={PageLogin} />
+          <Route path="/" component={HomePage} />
+        </Switch>
+      </Router>
     </div>
   );
 }
