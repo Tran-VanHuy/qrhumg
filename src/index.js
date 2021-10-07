@@ -5,17 +5,20 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import Layout from "./layout";
 import { Provider } from "react-redux";
-import store from "./redux/store"
-import 'bootstrap/dist/css/bootstrap.css';
+import store from "./redux/store";
+import "bootstrap/dist/css/bootstrap.css";
+import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.render(
-  <Provider store={store}>
-    <React.StrictMode>
-      <Layout>
-        <App />
-      </Layout>
-    </React.StrictMode>
-  </Provider>,
+  <BrowserRouter>
+    <Provider store={store}>
+      <React.StrictMode>
+        <Layout>
+          <App />
+        </Layout>
+      </React.StrictMode>
+    </Provider>
+  </BrowserRouter>,
   document.getElementById("root")
 );
 

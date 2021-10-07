@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { dispatch } from "react-hot-toast/dist/core/store";
 import { useDispatch } from "react-redux";
 import "./style.css";
 
 const LeftInfomation = ({ data }) => {
-  const [url, setUrl] = useState(null);
+  const [url, setUrl] = useState();
+ 
 
   return (
     <div className="wrapper-LeftInfomation">

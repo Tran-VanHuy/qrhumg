@@ -1,22 +1,23 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Menu from "../../components/Menu";
+import NewLatest from "../../components/NewsLatest";
 import { filterNews } from "../../redux/News/action";
 import DetailNews from "./Components/Details";
 import LeftInfomation from "./Components/Infomation/Components/Left";
 import RightInfomation from "./Components/Infomation/Components/Right";
-import NewLatest from "./Components/NewsLatest";
 import "./style.css";
 
 const PageNewDetail = (props) => {
   const slug = props.match.params.slug;
   const { dataFilterNews } = useSelector((state) => state.newRuducer);
+  console.log({});
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(filterNews(slug));
   }, [dispatch, slug]);
   return (
-    <div>
+    <div className = "wrapper-page-news">
       <Menu />
       <div className="information">
         <div className="wrapper-left-news">

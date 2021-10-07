@@ -91,7 +91,7 @@
     }
     
     .content-function {
-      margin-bottom: 100px;
+     display: none;
       background: #0c4ca3;
     }
     .item-content-function {
